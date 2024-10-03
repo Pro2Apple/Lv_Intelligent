@@ -8,8 +8,7 @@ from utils import script_master
 st.title("🎬 视频脚本生成器")
 
 with st.sidebar:
-    openai_api_key_A = st.text_input("请输入 OpenAI_API 密钥🔑：", type = "password")
-    OAK = "sk-svcacct--oK9Uq5Bo8p3dF0LVRU8YtPK47BtzVCRTRpTBZIFC7Y5WSMx7euDa-qsZqaS81dT3BlbkFJNYKDDHx64_SPZHPQWoJafPXAnT5xusRTf62jLX6oKpC7tH96DgitNghhZU11lAA"
+    openai_api_key = st.text_input("请输入 OpenAI_API 密钥🔑：", type = "password")
     st.markdown("[获取OpenAI API密钥](https://platform.openai.com/account/api-keys)")
 
 subject = st.text_input("💡 请输入视频的主题：")
@@ -30,7 +29,7 @@ if submit and not subject:
 
 if submit:
     with st.spinner("AI正在绞尽脑汁创作中，请稍等..."):
-        search_result, title, script = script_master(subject, video_length, creativity, OAK)
+        search_result, title, script = script_master(subject, video_length, creativity, openai_api_key)
     st.success("视频脚本已经生成！✅")
     st.subheader("🔥 标题：")
     st.write(title)
